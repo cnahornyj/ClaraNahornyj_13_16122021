@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import "../styles/FeatureItem.css";
-
+import React, { Component } from "react";
 class FeatureItem extends Component {
-    render() {
-        return (
-           <section className='featureItem'>
-               <img src={this.props.icon} alt="" />
-               <h3>{this.props.title}</h3>
-               <p>{this.props.text}</p>
-           </section>
-        );
-    }
+  render() {
+    return (
+      <div className="feature-item">
+        <img src={this.props.icon} alt="" className="feature-icon" />
+        <h3 className="feature-item-title">{this.props.title}</h3>
+        <p>{this.props.text}</p>
+      </div>
+    );
+  }
 }
 
 export default FeatureItem;

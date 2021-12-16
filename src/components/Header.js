@@ -1,13 +1,26 @@
 import React, { Component } from "react";
 import logo from "../assets/argentBankLogo.png";
-import "../styles/Header.css";
+import {Link} from "react-router-dom";
 
 class Header extends Component {
   render() {
     return (
-      <header>
-        <img src={logo} alt="Logo de ArgentBank" />
-      </header>
+      <nav className="main-nav">
+      <Link className="main-nav-logo" to="/">
+        <img
+          className="main-nav-logo-image"
+          src={logo}
+          alt="Argent Bank Logo"
+        />
+        <h1 className="sr-only">Argent Bank</h1>
+      </Link>
+      <div>
+        <Link className="main-nav-item" to="/login">
+          <i className="fa fa-user-circle"></i>
+          Sign In
+        </Link>
+      </div>
+    </nav>
     );
   }
 }
