@@ -10,7 +10,7 @@ import security from "../assets/icon-security.png";
 class HomePage extends Component {
   render() {
     return (
-      <div>
+      <section className="home">
         <Header />
         <Banner />
         <main>
@@ -34,7 +34,7 @@ class HomePage extends Component {
           </section>
         </main>
         <Footer />
-      </div>
+      </section>
     );
   }
 }

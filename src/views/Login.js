@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 class Login extends Component {
   render() {
     return (
-      <div>
+      <section className="login">
         <Header />
         <main className="main bg-dark-blue">
           <section className="sign-in-content">
@@ -29,7 +29,7 @@ class Login extends Component {
           </section>
         </main>
         <Footer />
-      </div>
+      </section>
     );
   }
 }
