@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import logo from "../assets/argentBankLogo.png";
 import {Link} from "react-router-dom";
+// import { useSelector } from "react-redux";
+
+
+
+/**  const userIsAuth = useSelector((state) => state.isAuth);
+  // on peut ensuite utiliser cette valeur dans le rendu
+  return <p>{userIsAuth ? "Link to login" : "Link to disconnect"}</p>; */
 
 class Header extends Component {
   render() {
