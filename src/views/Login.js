@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useDispatch } from "react-redux";
 
 function Login() {
+  const dispatch = useDispatch();
   /*const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [error, seterror] = useState(false);
@@ -47,7 +49,16 @@ function Login() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            <button className="sign-in-button">Sign In</button>
+            <button
+              className="sign-in-button"
+              // le state change d'état mais il n'est pas conservé /!\
+              // reload de la page au clic retour à l'état initial voir pour faire persister
+              onClick={() => {
+                dispatch({ type: "login" });
+              }}
+            >
+              Sign In
+            </button>
           </form>
         </section>
       </main>
@@ -65,4 +76,4 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(null, mapDispatchToProps)(Login);*/
 
-export default Login;                              
+export default Login;
