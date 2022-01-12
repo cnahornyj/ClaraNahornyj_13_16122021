@@ -1,18 +1,14 @@
-import React, { Component } from "react";
 import logo from "../assets/argentBankLogo.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
-
-
 
 /**  const userIsAuth = useSelector((state) => state.isAuth);
   // on peut ensuite utiliser cette valeur dans le rendu
   return <p>{userIsAuth ? "Link to login" : "Link to disconnect"}</p>; */
 
-class Header extends Component {
-  render() {
-    return (
-      <nav className="main-nav">
+function Header() {
+  return (
+    <nav className="main-nav">
       <Link className="main-nav-logo" to="/">
         <img
           className="main-nav-logo-image"
@@ -28,8 +24,7 @@ class Header extends Component {
         </Link>
       </div>
     </nav>
-    );
-  }
+  );
 }
 
 export default Header;
