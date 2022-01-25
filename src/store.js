@@ -8,8 +8,8 @@ const initialState = {
 };
 
 // actions creator
-const setUser = (payload) => ({ type: "SET_USER", payload})
-export const logUserOut = () => ({type: "LOG_OUT"})
+const setUser = (payload) => ({ type: "SET_USER", payload });
+export const logUserOut = () => ({ type: "LOG_OUT" });
 
 // reducer
 function userReducer(state = initialState, action) {
@@ -44,25 +44,27 @@ export const store = createStore(userReducer, applyMiddleware(thunk));
 const state = store.getState();
 console.log(state);
 
-const URL = 'localhost:3001/api/v1/';
+const URL = "http://localhost:3001/api/v1/user/";
 // const userInfos = {
 //   email: "tony@stark.com",
 //   password: "password123"
 // }
 
-export const fetchUser = (userInfos) => dispatch => {
-    fetch(URL+"login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(userInfos)
-    })
-    .then(res => res.json())
-    .then(data => {
-        localStorage.setItem("token", data.token)
-        dispatch(setUser(data.user))
-    })
-}
-
+export const fetchUser = (userInfos) => (dispatch) => {
+  fetch(URL + "login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(userInfos),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      localStorage.setItem("token", data.body.token);
+      dispatch(setUser(data.user));
+      const state1 = store.getState();
+      console.log(state1);
+    });
+};
