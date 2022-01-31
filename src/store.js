@@ -8,25 +8,26 @@ const initialState = {
 };
 
 // actions creator
+export const logUserIn = () => ({ type: "LOG_IN" });
 const setUser = (payload) => ({ type: "SET_USER", payload });
 export const logUserOut = () => ({ type: "LOG_OUT" });
 
 // reducer
 function userReducer(state = initialState, action) {
   switch (action.type) {
-    case "SET_USER":
+    case "LOG_IN":
       return {
         ...state,
         loggedIn: true,
+      };
+    case "SET_USER":
+      return {
+        ...state,
         user: { ...action.payload },
       };
     case "LOG_OUT":
       localStorage.clear();
-      return {
-        ...state,
-        loggedIn: false,
-        user: {},
-      };
+      return initialState;
     default:
       return state;
   }
@@ -45,10 +46,6 @@ const state = store.getState();
 console.log(state);
 
 const URL = "http://localhost:3001/api/v1/user/";
-// const userInfos = {
-//   email: "tony@stark.com",
-//   password: "password123"
-// }
 
 export const fetchUser = (userInfos) => (dispatch) => {
   fetch(URL + "login", {
@@ -61,10 +58,22 @@ export const fetchUser = (userInfos) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       localStorage.setItem("token", data.body.token);
-      dispatch(setUser(data.user));
-      const state1 = store.getState();
-      console.log(state1);
+      dispatch({ type: "LOG_IN" });
+      // const state1 = store.getState();
+      // console.log(state1);
+      let token = localStorage.getItem("token");
+      fetch(URL + "profile", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch(setUser(data.body));
+          const state2 = store.getState();
+          console.log(state2);
+        });
     });
 };
