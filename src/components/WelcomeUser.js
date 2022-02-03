@@ -1,4 +1,8 @@
-function WelcomeUser(props) {
+import { useSelector } from "react-redux";
+
+function WelcomeUser() {
+  const userFirstName = useSelector((state) => state.user.firstName);
+  const userLastName = useSelector((state) => state.user.lastName);
 
 
 // onClick affichage du composant EditUserName
@@ -10,7 +14,7 @@ const editName = () => {
     <div className="header">
       <h1>
         Welcome back <br />
-        {props.userName}
+        {userFirstName} {userLastName}
       </h1>
       <button className="edit-button" onClick={editName}>Edit name</button>
     </div>

@@ -1,9 +1,20 @@
 import logo from "../assets/argentBankLogo.png";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logUserOut } from "../store";
 
 function Header() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const loggedIn = useSelector((state) => state.loggedIn);
+  const userFirstName = useSelector((state) => state.user.firstName);
+  const userLastName = useSelector((state) => state.user.lastName);
+
+  const logout = () => {
+    dispatch(logUserOut());
+    history.push('/login');
+  }
 
   return (
     <nav className="main-nav">
@@ -16,13 +27,14 @@ function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       {loggedIn ? (
-        <div style={{display:"flex"}}>
+        <div style={{ display: "flex" }}>
           <i className="fas fa-user"></i>
-          <p>user.firstname</p>
-          <Link className="main-nav-item" to="/">
-            <i className="fas fa-sign-out-alt"></i>
-            Sign Out
-          </Link>
+          <p>
+            {userFirstName} {userLastName}
+          </p>
+          <button onClick={logout}>
+            <i className="fas fa-sign-out-alt"></i>I
+          </button>
         </div>
       ) : (
         <div>

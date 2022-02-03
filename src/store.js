@@ -1,5 +1,7 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+const reduxDevtools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 // state initial
 const initialState = {
@@ -33,21 +35,14 @@ function userReducer(state = initialState, action) {
   }
 }
 
-export const store = createStore(userReducer, applyMiddleware(thunk));
-
-// store.dispatch({ type: "SET_USER" });
-// const state = store.getState();
-// console.log(state);
-// store.dispatch({ type: "LOG_OUT" });
-// const state1 = store.getState();
-// console.log(state1);
-
-const state = store.getState();
-console.log(state);
+export const store = createStore(
+  userReducer,
+  compose(applyMiddleware(thunk), reduxDevtools)
+);
 
 const URL = "http://localhost:3001/api/v1/user/";
 
-export const fetchUser = (userInfos) => (dispatch) => {
+export const fetchUser = (userInfos) => {
   fetch(URL + "login", {
     method: "POST",
     headers: {
@@ -59,9 +54,7 @@ export const fetchUser = (userInfos) => (dispatch) => {
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("token", data.body.token);
-      dispatch({ type: "LOG_IN" });
-      // const state1 = store.getState();
-      // console.log(state1);
+      store.dispatch(logUserIn());
       let token = localStorage.getItem("token");
       fetch(URL + "profile", {
         method: "POST",
@@ -71,9 +64,7 @@ export const fetchUser = (userInfos) => (dispatch) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          dispatch(setUser(data.body));
-          const state2 = store.getState();
-          console.log(state2);
+        store.dispatch(setUser(data.body));
         });
     });
 };
