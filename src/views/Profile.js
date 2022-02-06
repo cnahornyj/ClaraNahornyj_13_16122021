@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WelcomeUser from "../components/WelcomeUser";
+import Transactions from "../components/Transactions";
 
 function Profile(){
   return (
@@ -8,7 +9,7 @@ function Profile(){
       <Header />
       <main className="main bg-dark-blue">
         <WelcomeUser />
-        <h2 className="sr-only">Accounts</h2>
+        <Transactions/>
       </main>
       <Footer />
     </section>
