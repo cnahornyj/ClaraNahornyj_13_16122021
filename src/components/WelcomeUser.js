@@ -1,13 +1,15 @@
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import EditUserName from "../components/EditUserName";
 
 function WelcomeUser() {
+  const [isVisible, setIsVisible] = useState(false);
+
   const userFirstName = useSelector((state) => state.user.firstName);
   const userLastName = useSelector((state) => state.user.lastName);
 
-
-// onClick affichage du composant EditUserName
-const editName = () => {
-  console.log("Click!")                                                                                                                                                                                            
+const showForm = () => {
+  setIsVisible(prevIsVisible => !prevIsVisible);                                                                                                                                                                                            
 }
 
   return (
@@ -16,7 +18,8 @@ const editName = () => {
         Welcome back <br />
         {userFirstName} {userLastName}
       </h1>
-      <button className="edit-button" onClick={editName}>Edit name</button>
+      <button className="edit-button" onClick={showForm}>Edit name</button>
+      {isVisible ? <EditUserName onClick={showForm} isVisible={isVisible} firstname={userFirstName} lastname={userLastName}/> : null}
     </div>
   );
 }
