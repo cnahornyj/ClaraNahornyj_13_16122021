@@ -9,7 +9,6 @@ function Header() {
 
   const loggedIn = useSelector((state) => state.loggedIn);
   const userFirstName = useSelector((state) => state.user.firstName);
-  const userLastName = useSelector((state) => state.user.lastName);
 
   const logout = () => {
     dispatch(logUserOut());
@@ -27,13 +26,14 @@ function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       {loggedIn ? (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <i className="fas fa-user"></i>
           <p>
-            {userFirstName} {userLastName}
+            {userFirstName}
           </p>
           <button onClick={logout}>
-            <i className="fas fa-sign-out-alt"></i>I
+            <i className="fas fa-sign-out-alt"></i>
+            Sign Out
           </button>
         </div>
       ) : (
