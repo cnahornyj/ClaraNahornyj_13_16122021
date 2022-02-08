@@ -64,7 +64,23 @@ export const fetchUser = (userInfos) => {
       })
         .then((res) => res.json())
         .then((data) => {
-        store.dispatch(setUser(data.body));
+          store.dispatch(setUser(data.body));
         });
     });
+};
+
+export const updateUser = (userInfos) => {
+  let token = localStorage.getItem("token");
+  fetch(URL+ "profile", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(userInfos),
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    store.dispatch(setUser(data.body));
+  })
 };
