@@ -11,7 +11,6 @@ function WelcomeUser() {
 const showForm = () => {
   setIsVisible(prevIsVisible => !prevIsVisible);                                                                                                                                                                                            
 }
-
   return (
     <div className="header">
       <h1>
@@ -19,7 +18,7 @@ const showForm = () => {
         {userFirstName} {userLastName}
       </h1>
       <button className="edit-button" onClick={showForm}>Edit name</button>
-      {isVisible ? <EditUserName onClick={showForm} isVisible={isVisible} firstname={userFirstName} lastname={userLastName}/> : null}
+      {isVisible ? <EditUserName isVisible={isVisible} setIsVisible={setIsVisible} firstname={userFirstName} lastname={userLastName}/> : null}
     </div>
   );
 }

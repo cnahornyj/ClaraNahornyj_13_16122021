@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { updateUser } from "../store";
 
-function EditUserName(props, { onClick, isVisible }) {
+function EditUserName(props, {isVisible, setIsVisible}) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
@@ -39,15 +39,6 @@ function EditUserName(props, { onClick, isVisible }) {
     }
   };
 
-  // const resetForm = (e) => {
-  //   // clear form and informations
-  //   // close modal ?
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   //form.reset();
-  //   console.log("On annule tout !");
-  // };
-
   return (
     <section className="editUser">
       <form onSubmit={onSubmit}>
@@ -68,10 +59,10 @@ function EditUserName(props, { onClick, isVisible }) {
           />
         </div>
         <button className="update-name-button">Save</button>
-        <button className="update-name-button" onClick={onClick}>
-          Cancel
-        </button>
       </form>
+      <button className="update-name-button" onClick={() => setIsVisible(false)}>
+        Cancel
+      </button>
     </section>
   );
 }
