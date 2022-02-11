@@ -18,7 +18,7 @@ const showForm = () => {
         {userFirstName} {userLastName}
       </h1>
       <button className="edit-button" onClick={showForm}>Edit name</button>
-      {isVisible ? <EditUserName isVisible={isVisible} setIsVisible={setIsVisible} firstname={userFirstName} lastname={userLastName}/> : null}
+      {isVisible ? <EditUserName setIsVisible={setIsVisible} /> : null}
     </div>
   );
 }

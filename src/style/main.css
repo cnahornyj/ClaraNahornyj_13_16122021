@@ -304,6 +304,12 @@ body {
   color: #fff;
 }
 
+.error-message{
+  margin-top: 10px;
+  font-weight: bold;
+  color: red;
+}
+
 .editUser {
   background-color: #dfe6ed;
   padding: 5% 0 5% 0;
