@@ -310,6 +310,20 @@ body {
   color: red;
 }
 
+.btn-logout{
+  border: none;
+  background-color: transparent;
+}
+
+.btn-logout > i{
+  margin-right: 5px;
+}
+
+.user-name{
+  padding-top: 15px;
+  margin-right: 20px;
+}
+
 .editUser {
   background-color: #dfe6ed;
   padding: 5% 0 5% 0;

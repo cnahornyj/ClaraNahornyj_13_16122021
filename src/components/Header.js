@@ -27,11 +27,11 @@ function Header() {
       </Link>
       {loggedIn ? (
         <div style={{ display: "flex", alignItems: "center" }}>
-          <i className="fas fa-user"></i>
-          <p>
+          <i className="fas fa-user" style={{ marginRight: "5px"}}></i>
+          <p className="user-name">
             {userFirstName}
           </p>
-          <button onClick={logout}>
+          <button className="btn-logout" onClick={logout}>
             <i className="fas fa-sign-out-alt"></i>
             Sign Out
           </button>
