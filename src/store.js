@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
+import { createStore } from "redux";
 const reduxDevtools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
@@ -35,10 +34,7 @@ function userReducer(state = initialState, action) {
   }
 }
 
-export const store = createStore(
-  userReducer,
-  compose(applyMiddleware(thunk), reduxDevtools)
-);
+export const store = createStore(userReducer, reduxDevtools);
 
 const URL = "http://localhost:3001/api/v1/user/";
 
@@ -71,7 +67,7 @@ export const fetchUser = (userInfos) => {
 
 export const updateUser = (userInfos) => {
   let token = localStorage.getItem("token");
-  fetch(URL+ "profile", {
+  fetch(URL + "profile", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -79,8 +75,8 @@ export const updateUser = (userInfos) => {
     },
     body: JSON.stringify(userInfos),
   })
-  .then((res) => res.json())
-  .then((data) => {
-    store.dispatch(setUser(data.body));
-  })
+    .then((res) => res.json())
+    .then((data) => {
+      store.dispatch(setUser(data.body));
+    });
 };
