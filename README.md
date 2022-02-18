@@ -9,7 +9,6 @@ In this documentation, we will see method to launch the project easily.
 ### 2.1 Prerequisites
 
 * [NodeJS](https://nodejs.org/en/)
-* [Yarn](https://yarnpkg.com/) 
 
 ### 2.2 Launching the project
 
