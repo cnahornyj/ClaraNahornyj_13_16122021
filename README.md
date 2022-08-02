@@ -2,7 +2,7 @@
 
 ![](src/assets/preview.png)
 
-HTML / CSS / REACT / REDUX
+HTML / CSS / REACT / REDUX / MONGODB
 
 @Openclassrooms
 
