@@ -1,25 +1,36 @@
-# Argent Bank
+# Argent Bank - Créez une application bancaire
 
-## 1. General informations
+![](src/assets/preview.png)
 
-In this documentation, we will see method to launch the project easily.
+HTML / CSS / REACT / REDUX
 
-## 2. Project
+@Openclassrooms
 
-### 2.1 Prerequisites
+## Les objectifs
 
+* Implémenter un gestionnaire d'état dans une application React
+* Intéragir avec une API
+* Modéliser une API
+* S'authentifier à une API
+
+### 1. Informations générales
+
+Dans cette documentation nous verrons comment lancer le projet sur votre machine.
+
+## 2. Projet
+
+### 2.1 Prérequis
 * [NodeJS](https://nodejs.org/en/)
 
-### 2.2 Launching the project
+### 2.2 Lancement du projet
 
 ### 2.2.1 Backend
 
-* Fork this [repository](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API#readme) and follow instructions 
-
+* Fork ce [repo](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API#readme) et suivez les instructions
 
 ### 2.2.2 Frontend
 
-* Fork this repository
-* Clone it on your computer
-* The `npm install` command will allow you to install the dependencies 
-* The `npm run start` command will allow you to run the frontend part of the project on the port 3000
+* Fork ce repo
+* Cloner le sur votre machine
+* Saisisser la commande `npm install` qui va installer toutes les dépendances 
+* Saisisser la commande `npm run start` qui vous permettra d'exécuter la partie frontend du projet sur le port 3000
